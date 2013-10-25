@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>jbake</groupId>
+  <artifactId>jbake-archetype</artifactId>
+  <version>1.0</version>
+  <packaging>maven-archetype</packaging>
+
+  <name>jbake-archetype</name>
+  <description>JBake Archetype</description>
+  <url>https://github.com/kaleeswaran14/jbake-archetype.git</url>
+
+   <issueManagement>
+       <url>https://github.com/kaleeswaran14/jbake-archetype/issues</url>
+       <system>GitHub</system>
+  </issueManagement>
+
+  <scm>
+    <url>https://github.com//kaleeswaran14/jbake-archetype</url>
+    <connection>scm:git:git://github.com//kaleeswaran14/jbake-archetype.git</connection>
+    <developerConnection>scm:git:git@github.com:kaleeswaran14/jbake-archetype.git</developerConnection>
+  </scm>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>2.2</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+        <plugin>
+            <groupId>com.github.github</groupId>
+            <artifactId>site-maven-plugin</artifactId>
+            <version>0.9</version>
+            <configuration>
+                <message>Maven artifacts for ${project.version}</message>
+                <noJekyll>true</noJekyll>
+                <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+                <branch>refs/heads/master</branch>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <repositoryName>mvn-repo</repositoryName>
+                <repositoryOwner>kaleeswaran14</repositoryOwner>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>site</goal>
+                </goals>
+                <phase>deploy</phase>
+              </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
+
+  <properties>
+    <internal.release.repo.path>file:///E:/work/JUG/JBake/MavenRepo/mvn-repo/releases/</internal.release.repo.path>
+    <internal.snapshot.repo.path>file:///E:/work/JUG/JBake/MavenRepo/mvn-repo/snapshots/</internal.snapshot.repo.path>
+    <github.global.server>github</github.global.server>
+  </properties>
+
+
+  <distributionManagement>
+    <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+<!--     <repository>
+        <id>release-repo</id>
+        <name>Release Repository</name>
+        <url>${internal.release.repo.path}</url>
+        <url>https://raw.github.com/kaleeswaran14/mvn-repo/master/releases</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshot-repo</id>
+        <name>Snapshot Repository</name>
+        <url>${internal.snapshot.repo.path}</url>
+        <url>https://raw.github.com/kaleeswaran14/mvn-repo/master/snapshots</url>
+    </snapshotRepository> -->
+  </distributionManagement>
+
+  <repositories>
+    <repository>
+        <id>jbake-mvn-repo</id>
+        <url>https://raw.github.com/kaleeswaran14/jbake/mvn-repo</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+  </repositories>
+
+</project>

@@ -1,5 +1,0 @@
-h1. Maven repository
-===============
-
-h2. How to use it
-	Jbake Archetype

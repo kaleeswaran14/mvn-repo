@@ -1,0 +1,9 @@
+h1. Maven repository
+
+h2. Available Archetype and Plugins
+
+1) @JBake Archetype@
+
+h3. JBake archetype usage
+
+@mvn archetype:generate -DgroupId=jbake -DartifactId=jbake -DarchetypeArtifactId=jbake-archetype -DinteractiveMode=false@

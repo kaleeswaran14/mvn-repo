@@ -1,4 +1,4 @@
 mvn-repo
 ========
 
-Maven Repo
+Maven Repo of JUGChennai
